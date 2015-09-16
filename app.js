@@ -55,12 +55,15 @@ app.get("/countries/:id",function(req,res){
 
 
 app.put("/countries/:id",function(req,res){
-  db.Country.findAndUpdateById(req.params.id,req.body.id,function(err,country){
-    if (err) {
-      res.render("404");
-    }else{
-      res.render("/");
+  db.Country.findById(req.params.id, function(err,country){
+    for(var prop in req.body.country){
+      country[prop] = req.body.country[prop];
     }
+    country.cities = req.body.cities.split(",");
+    country.save(function(err,country){
+      if(err) throw err;
+      res.redirect("/");
+    });  
   });
 });
 
@@ -75,14 +78,21 @@ app.delete("/remove/:id",function(req,res){
 });
 
 app.post("/countries",function(req,res){
-  db.Country.create(req.body.country,function(err,country){
-    if (err) {
-      var errorText = "Please Try Again. Text Cannot be Blank.";
-      res.render("new",{error:errorText});
-    }else if(country){
-      res.redirect("/");
-    }
+  var country = new db.Country(req.body.country);
+  var cities = req.body.cities.split(",");
+  country.cities = cities;
+  country.save(function(err){
+    if(err) throw err;
+    res.redirect("/");
   });
+  // db.Country.create(req.body.country,function(err,country){
+  //   if (err) {
+  //     var errorText = "Please Try Again. Text Cannot be Blank.";
+  //     res.render("new",{error:errorText});
+  //   }else if(country){
+  //     res.redirect("/");
+  //   }
+  // });
 });
 
 app.get("/new",function(req,res){
