@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  
+  <link rel="stylesheet" href="/style_sheets/style.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <div class="btn-group" role="group">
+          <a href="/"><button type="button" class="btn btn-default">Home</button></a>
+          <a href="/new"><button type="button" class="btn btn-default">Add Country</button></a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+  <form action="/countries/<%= country.id%>?_method=put" method="POST">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+    <h1>Edit Entry</h1>
+    <form action="/country" method="POST" class="form-horizontal">  
+      <label for="name">Name:</label>
+      <input type="text" required id="name" name="country[name]" value="<%= country.name %>">
+    </p>
+    <p>
+      <label for="population">Population:</label>
+      <input type="text" required id="population" name="country[population]" value="<%= country.population %>">
+    </p>
+    <p>
+      <label for="image">Flag</label>
+      <input type="text" id="image" name="country[img]"  value="<%= country.img %>">
+    </p>
+    <p>
+      <label for="Cities">Cities:</label>
+      <input type="text" id="cities" name="country[cities]"  value="<%= country.cities %>">
+    </p>
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+        
+      </div>
+    </div>
+  </div>  
+    <p>
+</body>
+</html>

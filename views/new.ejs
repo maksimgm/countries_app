@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Country</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  
+  <link rel="stylesheet" href="/style_sheets/style.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-default">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <div class="btn-group" role="group">
+          <a href="/"><button type="button" class="btn btn-default">Home</button></a>
+          <a href="/new"><button type="button" class="btn btn-default">Add Country</button></a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="container">
+    <div class="col-xs-8 col-xs-offset-2">
+    <h1 class="text-center">Add A Country</h1><hr>
+      <form action="/countries" method="POST" class="form-horizontal">
+        <p>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" required id="name" name="country[name]">
+          </div>
+        </p>
+        <p>
+          <div class="form-group">
+            <label for="author">Population:</label>
+            <input type="text" required id="author" name="country[population]">
+          </div>
+        </p>
+        <p>
+          <div class="form-group">
+            <label for="image">Flag Image:</label>
+            <input type="text" id="image" name="country[img]">
+          </div>
+        </p>
+        <p>
+          <div class="form-group">
+            <label for="image">Cities:</label>
+            <input type="text" id="image" name="country[cities]">
+          </div>
+        </p>
+        <p>
+          <input class="btn btn-default btn-block btn-info" type="submit">
+        </p>
+      </form>    
+    </div>
+</div>
+  
+</body>
+</html>
