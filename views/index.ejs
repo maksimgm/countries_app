@@ -9,7 +9,7 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   
-  <link rel="stylesheet" href="/style_sheets/style.css">
+  <link rel="stylesheet" href="style.css">
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -19,7 +19,7 @@
 <div class="navbar navbar-default">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
+      <div class="col-xs-4 col-xs-offset-4">
         <div class="btn-group" role="group">
           <a href="/"><button type="button" class="btn btn-default">Home</button></a>
           <a href="/new"><button type="button" class="btn btn-default">Add Country</button></a>
@@ -28,14 +28,14 @@
     </div>
   </div>  
 </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <h1 class="text-center">Countries</h1>
     </div>  
   </div>
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-12">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -43,29 +43,36 @@
             <td><strong>Population:</strong></td>
             <td><strong>Image:</strong></td>
             <td><strong>Cities:</strong></td>
-            <td><strong>Alter:</strong></td>
-            <td><strong>Delete:</strong></td>
           </tr>
         </thead> 
         <tbody>
           <% countries.forEach(function(country){ %>
-          <tr class="info">
+          <tr class="success">
             <td><a href="/countries/<%= country.id%>"> <%= country.name %> </a></td>
-            <td> <%= country.population%> </td>
-            <td><img src="<%= country.img %> "> </td>
-            <td> <%= country.cities %> </td>
-            <td>
+            <td> <%= country.population%> 
               <form action="/countries/<%= country.id%>/edit" method="GET">
                 <label for="change"></label>
-                <button type="button btn-default btn-succes" id="change">Alter</button>
+                <button type="submit" class="btn btn-success btn-block" id="change">Alter</button>
+              </form>
+              <form action="/countries/<%= country.id%>?_method=delete" method="POST">
+              <label for="delete"></label>
+              <button type="submit" class="btn btn-danger btn-block" id="delete">Delete</button>
+              </form>
+            </td>
+            <td><img src="<%= country.img %> " height="150" width="200"> </td>
+            <td> <%= country.cities %> </td>
+            <!-- <td>
+              <form action="/countries/<%= country.id%>/edit" method="GET">
+                <label for="change"></label>
+                <button type="submit" class="btn btn-success btn-block" id="change">Alter</button>
               </form>
             </td>
             <td>
-              <form action="/remove/<%= country.id%>?_method=delete" method="POST">
+              <form action="/countries/<%= country.id%>?_method=delete" method="POST">
               <label for="delete"></label>
-              <button type="button btn-default btn-succes" id="delete">Delete</button>
+              <button type="submit" class="btn btn-danger btn-block" id="delete">Delete</button>
               </form>
-            </td>
+            </td> -->
             <% }) %>
           </tr>
         </tbody>

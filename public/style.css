@@ -1,0 +1,15 @@
+body{
+  background: url("http://i.huffpost.com/gen/1639174/images/o-INTERNET-ACCESS-GLOBAL-facebook.jpg")center center no-repeat;
+  background-position: cover;
+}
+
+h1,h2,h3,h4,h5,h6,p,label,td{
+  color: green;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+}

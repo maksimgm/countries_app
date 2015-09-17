@@ -67,7 +67,7 @@ app.put("/countries/:id",function(req,res){
   });
 });
 
-app.delete("/remove/:id",function(req,res){
+app.delete("/countries/:id",function(req,res){
   db.Country.findByIdAndRemove(req.params.id,function(err,country){
     if (err) {
       res.render("404");
