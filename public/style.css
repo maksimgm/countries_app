@@ -1,6 +1,8 @@
 body{
-  background: url("http://i.huffpost.com/gen/1639174/images/o-INTERNET-ACCESS-GLOBAL-facebook.jpg")center center no-repeat;
+  background: url("http://i.huffpost.com/gen/1639174/images/o-INTERNET-ACCESS-GLOBAL-facebook.jpg")center center no-repeat fixed;
   background-position: cover;
+  height: 800px;
+
 }
 
 h1,h2,h3,h4,h5,h6,p,label,td{
