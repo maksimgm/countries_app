@@ -16,6 +16,9 @@ app.use(morgan('tiny'));
 
 var db = require("./models");
 
+app.get("countries",function(req,res){
+  res.redirect("/");
+});
 
 app.get("/",function(req,res){
   db.Country.find({},function(err,countries){
@@ -55,14 +58,14 @@ app.get("/countries/:id",function(req,res){
 
 
 app.put("/countries/:id",function(req,res){
-  db.Country.findById(req.params.id, function(err,country){
+  db.Country.findByIdAndUpdate(req.params.id, function(err,country){
     for(var prop in req.body.country){
       country[prop] = req.body.country[prop];
     }
     country.cities = req.body.cities.split(",");
     country.save(function(err,country){
       if(err) throw err;
-      res.redirect("/");
+      res.redirect("/countries");
     });  
   });
 });
@@ -72,7 +75,7 @@ app.delete("/countries/:id",function(req,res){
     if (err) {
       res.render("404");
     }else if(country){
-      res.redirect("/");
+      res.redirect("/countries");
     }
   });
 });
@@ -83,7 +86,7 @@ app.post("/countries",function(req,res){
   country.cities = cities;
   country.save(function(err){
     if(err) throw err;
-    res.redirect("/");
+    res.redirect("/countries");
   });
   // db.Country.create(req.body.country,function(err,country){
   //   if (err) {
@@ -99,6 +102,9 @@ app.get("/new",function(req,res){
   res.render("new");
 });
 
+app.get("*",function(req,res){
+  res.render("404");
+});
 
 app.listen(3000,function(){
   console.log("Got to localhost:3000/");
